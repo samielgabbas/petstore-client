@@ -1,0 +1,22 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Ship date</th>
+    <th scope="col">Status</th>
+    <th scope="col">Pet Id</th>
+    <th scope="col">Quantity</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr (click)="onSelect(order)" [class.active]="order === selectedOrder" *ngFor="let order of orders">
+    <th scope="row">{{order.id}}</th>
+    <td>{{order.shipDate | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+    <td>{{order.status}}</td>
+    <td>{{order.petId}}</td>
+    <td>{{order.quantity}}</td>
+    <td><button *ngIf="canDelete()" [disabled]="!(order.status=='PLACED')"  class="btn btn-danger btn-sm" (click)="delete(order); $event.stopPropagation()">x</button></td>
+  </tr>
+  </tbody>
+</table>

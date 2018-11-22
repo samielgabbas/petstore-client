@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+- '8.9'
+before_install:
+- npm install -g @angular/cli
+- export CHROME_BIN=/usr/bin/google-chrome
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sudo apt-get update
+- sudo apt-get install -y libappindicator1 fonts-liberation
+- wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+- sudo dpkg -i google-chrome*.deb
+install: npm install
+script:
+- ng build --prod
+deploy:
+  provider: heroku
+  api_key:
+    secure: WL2vWm3FiYz5asBPNOCmEKcZmMMK0BHR/DO3iJN18OFqGHVsGwOH3cVK3V+B6FAte944jnneqsR3qLh+LSVOnoKqGAzKGEBjR44+XCD+bvYzDmBXu+ZoxKtXFJYLCO78sv1iccK8S3ptAR5BADcdDvleaGP4Zhuedc/M94DnPtF7BOLm9YrPUih2YXpXg1Kch2rei1yPTNcPYr8oXVBwgwb1RWbAmbM9GFk8SnC4GIrwqrjq/j2pyAn9ZijqOXY1Q35noDnEpeicKnhz4T8T/Uuou5bvnvHXXZUQV6X2peXaV0SxCZin+4nSTaesQtBDX1kOGhEdWPVCNXvuwWj+saa/t7cuxd77kGr4zf/6CmrJfFAwXM1acVCDcdCyKlYPH5aj9fMHT2Z54vqkESZdnDrIDqGjMav0aC/1eM5QoxKyMtgOXyyTP6GiHphOHbwjB9LX8kacNT4ZqDhlezvWvUo5+n2n+Dwr1Ex1vgunkkOAH5VLIaat9GvHB1AgBWix5nlQaR27HXRdCKMcnPjuhvtMQJbgcceC6CDSwmKnp+j+1xqeGSD1AfgYu1VwnBWyr8BbYrmjOqQl/5URAiW520if2BtfWIhQi1pcPCLOKyL8CgsrjLcy+InbCLhZFjbJFCSmEBQy9YRY/k2Are6Z85y3Fl0cWxR5IMhyIAi8eJE=
+  app: petstore-client

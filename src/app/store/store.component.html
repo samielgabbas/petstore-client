@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-3 float-left">
+    <app-pets></app-pets>
+  </div>
+  <div class="col-md-3 float-left" [hidden]="isAdd">
+    <app-pet-detail></app-pet-detail>
+  </div>
+  <div class="col-md-3 float-left" [hidden]="!isAdd">
+    <app-pet-add></app-pet-add>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <button class="btn btn-primary" (click)="addNewPet()">Add new pet</button>
+  </div>
+</div>
+

@@ -1,0 +1,9 @@
+.propLbl {
+    width: 80px;
+    font-weight: bold;
+    margin: 0;
+}
+.order-container{
+  display: flex;
+  justify-content: space-between;
+}

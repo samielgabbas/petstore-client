@@ -1,0 +1,19 @@
+<div class="card" *ngIf="pet">
+
+  <h4 class="card-header">{{ pet.name | uppercase }}</h4>
+  <div class="card-body">
+    <div>
+      <label class="propLbl">Id:</label>
+      <span>{{pet.id}}</span>
+    </div>
+    <div>
+      <label class="propLbl">Status:</label>
+      <span>{{pet.status}}</span>
+    </div>
+    <div *ngIf="pet.status=='AVAILABLE'" class="order-container">
+      <input [(ngModel)]="quantity" type="number" value="1" min="1" max="5">
+      <button class="btn btn-primary"  (click)="onOrder(pet)">Order</button>
+    </div>
+  </div>
+</div>
+
